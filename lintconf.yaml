@@ -1,0 +1,4 @@
+# chart-testing lint config
+helm-extra-args: --timeout 600
+check-version-increment: true
+debug: true

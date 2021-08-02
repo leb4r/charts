@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "cardano.fullname" . }}
+  labels:
+    {{- include "cardano.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "cardano.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "cardano.fullname" . }}
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "12798"
+        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "cardano.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- include "cardano.pod" . | nindent 6 }}
+  volumeClaimTemplates:
+  - metadata:
+      name: storage
+    spec:
+      accessModes: {{ .Values.storage.accessModes }}
+      storageClassName: {{ .Values.storage.storageClassName }}
+      resources:
+        requests:
+          storage: {{ .Values.storage.size }}
+      {{- with .Values.storage.selectorLabels }}
+      selector:
+        matchLabels:
+        {{ toYaml . | indent 10 }}
+      {{- end }}
+

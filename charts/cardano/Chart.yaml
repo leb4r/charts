@@ -1,0 +1,13 @@
+apiVersion: v3
+name: cardano
+description: A Helm chart for Cardano node
+type: application
+version: 0.1.0
+icon: https://leb4r.github.io/charts/assets/img/cardano.svg
+keywords:
+  - cardano
+home: https://cardano.org
+sources:
+  - https://github.com/input-output-hk/cardano-node
+maintainers: []
+appVersion: 1.28.0

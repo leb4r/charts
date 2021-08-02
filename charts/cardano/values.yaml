@@ -1,0 +1,76 @@
+# Default values for cardano.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+
+image:
+  repository: inputoutput/cardano-node
+  pullPolicy: Always
+  args: ["run"]
+
+cardano:
+  network: mainnet
+  # whether or not to setup as a block producer
+  isBlockProducer: false
+  # additional producers
+  producers: []
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # specifies whether a service account should be created
+  create: true
+  # annotations to add to the service account
+  annotations: {}
+  # the name of the service account to use.
+  # if not set and create is true, a name is generated using the fullname template
+  name:
+
+podAnnotations: {}
+
+podSecurityContext: {}
+containerSecurityContext: {}
+
+storage:
+  type: pvc
+  enabled: true
+  # storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  # annotations: {}
+  finalizers:
+    - kubernetes.io/pvc-protection
+  # selectorLabels: {}
+  # subPath: ""
+
+container:
+  ports:
+    tcp: 3001
+
+volumes:
+  config:
+    mountPath: /opt/cardano/config
+
+service:
+  # annotations: {}
+  type: NodePort
+  tcp: 3001
+
+serviceMonitor:
+  enabled: false
+  path: /metrics
+  labels: {}
+  interval: 15s
+  port: 12798
+  scheme: http
+  tlsConfig: {}
+  scrapeTimeout: 30s
+  relabelings: []
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
