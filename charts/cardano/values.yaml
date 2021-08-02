@@ -5,6 +5,8 @@ replicaCount: 1
 
 image:
   repository: inputoutput/cardano-node
+  # TODO: remove this value once `1.29.0` is released
+  tag: master
   pullPolicy: Always
   args: ["run"]
 

@@ -24,6 +24,7 @@ A Helm chart for Cardano node
 | image.args[0] | string | `"run"` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"inputoutput/cardano-node"` |  |
+| image.tag | string | `"master"` |  |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
