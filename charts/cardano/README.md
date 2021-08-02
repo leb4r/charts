@@ -1,10 +1,16 @@
 # cardano
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.28.0](https://img.shields.io/badge/AppVersion-1.28.0-informational?style=flat-square)
+![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![AppVersion: 1.28.0](https://img.shields.io/badge/AppVersion-1.28.0-informational?style=flat-square)
 
 A Helm chart for Cardano node
 
 **Homepage:** <https://cardano.org>
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| leb4r | git+me@leb4r.io |  |
 
 ## Source Code
 
@@ -24,6 +30,7 @@ A Helm chart for Cardano node
 | image.args[0] | string | `"run"` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"inputoutput/cardano-node"` |  |
+| image.tag | string | `"master"` |  |
 | imagePullSecrets | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
