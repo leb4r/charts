@@ -1,0 +1,28 @@
+name: lint
+
+on:
+  pull_request:
+    paths:
+      - charts/**
+
+jobs:
+  lint-chart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run chart-testing (lint)
+        uses: helm/chart-testing-action@master
+        with:
+          command: lint
+          config: lintconfig.yaml
+
+  lint-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run helm-docs
+        run: .github/helm-docs.sh
