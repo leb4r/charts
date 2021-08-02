@@ -56,9 +56,6 @@ containers:
     subPath: {{ .Values.storage.subPath }}
     {{- end }}
   - name: config
-    mountPath: /opt/cardano/config/mainnet-config.json
-    subPath: mainnet-config.json
-  - name: config
     mountPath: /opt/cardano/config/mainnet-topology.json
     subPath: mainnet-topology.json
   - name: config
