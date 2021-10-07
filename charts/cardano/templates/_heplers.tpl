@@ -68,10 +68,10 @@ Create the cardano topology JSON config files
 {{- define "cardano.topologyJson" -}}
 {{ $defaultProducers := list (dict "addr" (printf "relays-new.cardano-%s.iohk.io" .Values.cardano.network) "port" 3001 "valency" 1) }}
 {{ $producers := list }}
-{{- if .Values.cardano.producers -}}
-{{ $producers := concat $defaultProducers .Values.cardano.producers }}
+{{- if gt (len .Values.cardano.producers) 0 -}}
+{{ $producers = concat $defaultProducers .Values.cardano.producers }}
 {{- else -}}
-{{ $producers := $defaultProducers }}
+{{ $producers = $defaultProducers }}
 {{- end -}}
 {{ toPrettyJson (dict "Producers" $producers) }}
 {{- end -}}

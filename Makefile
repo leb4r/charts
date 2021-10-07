@@ -1,4 +1,4 @@
-.PHONY: docs index lint
+.PHONY: docs index lint test
 
 docs:
 	bash .github/helm-docs.sh
@@ -8,3 +8,6 @@ index:
 
 lint:
 	ct lint --all
+
+test:
+	ct install --config ct.yaml
