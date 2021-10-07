@@ -25,17 +25,17 @@ spec:
     spec:
       {{- include "cardano.pod" . | nindent 6 }}
   volumeClaimTemplates:
-  - metadata:
-      name: storage
-    spec:
-      accessModes: {{ .Values.storage.accessModes }}
-      storageClassName: {{ .Values.storage.storageClassName }}
-      resources:
-        requests:
-          storage: {{ .Values.storage.size }}
-      {{- with .Values.storage.selectorLabels }}
-      selector:
-        matchLabels:
-        {{ toYaml . | indent 10 }}
-      {{- end }}
+    - metadata:
+        name: {{ template "cardano.fullname" . }}
+      spec:
+        accessModes: {{ .Values.storage.accessModes }}
+        storageClassName: {{ .Values.storage.storageClassName }}
+        resources:
+          requests:
+            storage: {{ .Values.storage.size }}
+        {{- with .Values.storage.selectorLabels }}
+        selector:
+          matchLabels:
+          {{ toYaml . | indent 10 }}
+        {{- end }}
 
