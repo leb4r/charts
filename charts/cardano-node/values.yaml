@@ -5,7 +5,8 @@ replicaCount: 1
 
 image:
   repository: inputoutput/cardano-node
-  tag: ""
+  # by default this will use Chart.AppVersion
+  # tag: ""
   pullPolicy: Always
   args: ["run"]
 
