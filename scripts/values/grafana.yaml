@@ -1,0 +1,10 @@
+---
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  hosts:
+    - grafana.minikube
+
+persistence:
+  enabled: true
+  size: 100Mi
