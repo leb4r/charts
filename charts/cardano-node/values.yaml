@@ -1,10 +1,11 @@
-# Default values for cardano.
+# Default values for cardano-node.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 replicaCount: 1
 
 image:
   repository: inputoutput/cardano-node
+  # defaults to Chart.AppVersion
   tag: ""
   pullPolicy: Always
   args: ["run"]

@@ -1,0 +1,25 @@
+---
+dashboard:
+  enabled: true
+  domain: traefik-ui.minikube
+
+# don't want anonymous usage and checknewversion
+globalArguments: []
+
+ingressClass:
+  enabled: true
+
+logs:
+  general:
+    level: DEBUG
+
+metrics:
+  prometheus:
+    enabled: true
+
+rbac:
+  enabled: true
+
+service:
+  nodePorts:
+    http: 80

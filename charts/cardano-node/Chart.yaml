@@ -1,7 +1,7 @@
 apiVersion: v2
-name: cardano
-description: A Helm chart for Cardano node
-version: "1.1.0"
+name: cardano-node
+description: A Helm chart for a Cardano node
+version: "1.0.0"
 icon: https://leb4r.github.io/charts/assets/img/cardano.svg
 keywords:
   - cardano
