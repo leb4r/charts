@@ -55,4 +55,23 @@ entries:
     urls:
     - https://github.com/leb4r/charts/releases/download/cardano-0.0.1/cardano-0.0.1.tgz
     version: 0.0.1
-generated: "2021-10-10T19:53:59.350388643Z"
+  cardano-node:
+  - apiVersion: v2
+    appVersion: 1.30.1
+    created: "2021-11-01T01:46:18.962483709Z"
+    description: A Helm chart for a Cardano node
+    digest: 48e94453c8b4f7c6e32c783ea302acd5d5465ecf7a4f79f821590694bb0e94c0
+    home: https://cardano.org
+    icon: https://leb4r.github.io/charts/assets/img/cardano.svg
+    keywords:
+    - cardano
+    maintainers:
+    - email: git+me@leb4r.io
+      name: leb4r
+    name: cardano-node
+    sources:
+    - https://github.com/input-output-hk/cardano-node
+    urls:
+    - https://github.com/leb4r/charts/releases/download/cardano-node-1.0.0/cardano-node-1.0.0.tgz
+    version: 1.0.0
+generated: "2021-11-01T01:46:18.962495908Z"
