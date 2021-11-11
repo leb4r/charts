@@ -27,11 +27,11 @@ helm repo add leb4r https://leb4r.github.io/charts
 Create minikube luster
 
 ```bash
-bash scripts/setup-minikube.sh
+bash scripts/create-cluster.sh
 ```
 
-Install tools (grafana, prometheus, and traefik)
+Bootstrap cluster (grafana, prometheus, and traefik)
 
 ```bash
-bash scripts/setup-cluster.sh
+bash scripts/bootstrap-cluster.sh
 ```

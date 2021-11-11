@@ -40,6 +40,10 @@ if command -v helm 2>/dev/null; then
 	helm install -n $INGRESS_NAMESPACE traefik $TRAEFIK_CHART --values $_dir/values/traefik.yaml || true
 	helm install -n $MONITORING_NAMESPACE prometheus $PROMETHEUS_CHART --values $_dir/values/prometheus.yaml || true
 	helm install -n $MONITORING_NAMESPACE grafana $GRAFANA_CHART --values $_dir/values/grafana.yaml || true
+
+	echo
+	echo "Use 'minikube service -n ingress traefik' to open traefik in the default browser..."
+	echo
 else
 	echo "helm is not installed..."
 	echo "cannot continue setting up cluster..."
