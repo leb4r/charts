@@ -15,7 +15,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-  - port: {{ .Values.service.tcp }}
+  - port: {{ .Values.ports.rpc.port }}
     protocol: TCP
     name: tcp
   selector:

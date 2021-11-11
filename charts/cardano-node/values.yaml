@@ -1,14 +1,12 @@
-# Default values for cardano-node.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-replicaCount: 1
-
+# Default values for cardano-node
 image:
   repository: inputoutput/cardano-node
   # defaults to Chart.AppVersion
   tag: ""
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   args: ["run"]
+
+replicaCount: 1
 
 cardano:
   network: mainnet
@@ -28,23 +26,22 @@ serviceAccount:
   annotations: {}
   # the name of the service account to use.
   # if not set and create is true, a name is generated using the fullname template
-  name:
+  name: ""
 
 podAnnotations: {}
 
-podSecurityContext: {}
-containerSecurityContext: {}
-
-storage:
-  type: pvc
+persistence:
   enabled: true
+  name: data
+  type: pvc
+  # modify this to match service-provider CSI (e.g. do-block-storage)
   # storageClassName: default
   accessModes:
     - ReadWriteOnce
   size: 10Gi
-  # annotations: {}
   finalizers:
     - kubernetes.io/pvc-protection
+  # annotations: {}
   # selectorLabels: {}
   # subPath: ""
 
@@ -52,27 +49,80 @@ container:
   ports:
     tcp: 3001
 
+ports:
+  rpc:
+    # default port for cardano-node rpc endpoint
+    port: 3001
+    # hostPort: 3001
+    # Defines whether the port is exposed if service.type is LoadBalancer or
+    # NodePort.
+    #
+    # You may not want to expose the metrics port on production deployments.
+    # If you want to access it from outside of your cluster,
+    # use `kubectl port-forward` or create a secure ingress
+    expose: false
+    exposedPort: 3001
+    protocol: TCP
+  metrics:
+    # default port for prometheus metrics
+    port: 12798
+    # Defines whether the port is exposed if service.type is LoadBalancer or
+    # NodePort.
+    #
+    # You may not want to expose the metrics port on production deployments.
+    # If you want to access it from outside of your cluster,
+    # use `kubectl port-forward` or create a secure ingress
+    expose: false
+    # the exposed port for this service
+    exposedPort: 12798
+    # the port protocol (TCP/UDP)
+    protocol: TCP
+
 volumes:
   config:
     mountPath: /opt/cardano/config
 
+# options for the main cardano-node service
 service:
-  # annotations: {}
-  type: NodePort
-  tcp: 3001
+  enabled: true
+  type: LoadBalancer
+  # additional service annotations
+  annotations: {}
+  # additional service labels
+  labels: {}
 
+# options for optional ServiceMonitor, uses port from ports.metrics.port
 serviceMonitor:
   enabled: false
   path: /metrics
   labels: {}
   interval: 15s
-  port: 12798
   scheme: http
   tlsConfig: {}
   scrapeTimeout: 30s
   relabelings: []
 
 resources: {}
+# requests:
+#   cpu: "100m"
+#   memory: "50Mi"
+# limits:
+#   cpu: "300m"
+#   memory: "150Mi"
+
+affinity: {}
+
 nodeSelector: {}
 tolerations: []
-affinity: {}
+
+# Set the container security context
+# To run the container with ports below 1024 this will need to be adjust to run as root
+# securityContext:
+#   capabilities:
+#     drop: [ALL]
+#   readOnlyRootFilesystem: true
+#   runAsGroup: 65532
+#   runAsNonRoot: true
+#   runAsUser: 65532
+podSecurityContext: {}
+containerSecurityContext: {}

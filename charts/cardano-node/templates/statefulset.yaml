@@ -15,7 +15,7 @@ spec:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
-        prometheus.io/port: "12798"
+        prometheus.io/port: "{{ .Values.ports.metrics.port }}"
         checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
@@ -28,12 +28,12 @@ spec:
     - metadata:
         name: {{ template "cardano.fullname" . }}
       spec:
-        accessModes: {{ .Values.storage.accessModes }}
-        storageClassName: {{ .Values.storage.storageClassName }}
+        accessModes: {{ .Values.persistence.accessModes }}
+        storageClassName: {{ .Values.persistence.storageClassName }}
         resources:
           requests:
-            storage: {{ .Values.storage.size }}
-        {{- with .Values.storage.selectorLabels }}
+            storage: {{ .Values.persistence.size }}
+        {{- with .Values.persistence.selectorLabels }}
         selector:
           matchLabels:
           {{ toYaml . | indent 10 }}

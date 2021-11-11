@@ -52,8 +52,8 @@ containers:
     volumeMounts:
       - name: {{ template "cardano.fullname" . }}
         mountPath: /opt/cardano/data
-        {{- if .Values.storage.subPath }}
-        subPath: {{ .Values.storage.subPath }}
+        {{- if .Values.persistence.subPath }}
+        subPath: {{ .Values.persistence.subPath }}
         {{- end }}
       - name: config
         mountPath: /opt/cardano/config/mainnet-topology.json

@@ -18,7 +18,7 @@ spec:
     {{- if .Values.serviceMonitor.scrapeTimeout }}
     scrapeTimeout: {{ .Values.serviceMonitorig.scrapeTimeout }}
     {{- end}}
-    port: {{ .Values.serviceMonitor.port }}
+    port: {{ .Values.ports.metrics.port }}
     path: {{ .Values.serviceMonitor.path }}
     scheme: {{ .Values.serviceMonitor.scheme }}
     {{- if .Values.serviceMonitor.tlsConfig }}
