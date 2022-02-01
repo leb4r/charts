@@ -71,4 +71,10 @@ function parse_args() {
 	done
 }
 
-parse_args $@
+function main() {
+	if _minikube_check; then
+		parse_args $@
+	fi
+}
+
+main $@

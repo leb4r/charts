@@ -16,22 +16,24 @@ helm repo add leb4r https://leb4r.github.io/charts
 
 ## Development
 
-## Software Requirements
+### Software Requirements
 
 - kubectl
 - helm
 - minikube
 
-## Setup
+### Setup
 
-Create minikube luster
+Create minikube cluster (including grafana, prometheus, and traefik)
 
 ```bash
-bash scripts/setup-minikube.sh
+make minikube
 ```
 
-Install tools (grafana, prometheus, and traefik)
+### Cleanup
+
+Delete minikube cluster
 
 ```bash
-bash scripts/setup-cluster.sh
+make cleanup
 ```

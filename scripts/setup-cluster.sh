@@ -1,17 +1,17 @@
 #!/bin/bash
 
-PROMETHEUS_CHART="prometheus-community/prometheus"
-GRAFANA_CHART="grafana/grafana"
-TRAEFIK_CHART="traefik/traefik"
+readonly PROMETHEUS_CHART="prometheus-community/prometheus"
+readonly GRAFANA_CHART="grafana/grafana"
+readonly TRAEFIK_CHART="traefik/traefik"
 
-MONITORING_NAMESPACE="monitoring"
-INGRESS_NAMESPACE="ingress"
+readonly MONITORING_NAMESPACE="monitoring"
+readonly INGRESS_NAMESPACE="ingress"
 
 # dir of script
-_dir=$(dirname $0)
+readonly _dir=$(dirname $0)
 
 # default k8s client
-_kube="kubectl"
+readonly _kube="kubectl"
 
 if command -v kubectl >/dev/null 2>&1; then
 	_kube="$_kube"
