@@ -74,4 +74,23 @@ entries:
     urls:
     - https://github.com/leb4r/charts/releases/download/cardano-node-1.0.0/cardano-node-1.0.0.tgz
     version: 1.0.0
-generated: "2021-11-01T01:46:18.962495908Z"
+  echo-server:
+  - apiVersion: v2
+    appVersion: 0.2.3
+    created: "2022-02-01T19:41:23.988221045Z"
+    description: A tiny go web server that echos what you start it with!
+    digest: 51a21341d6cb66d11cb646623ecef71850281a08784e83b788a3f427b7b4fcd1
+    home: https://github.com/hashicorp/http-echo
+    icon: https://leb4r.github.io/charts/assets/img/http-echo.svg
+    keywords:
+    - http-echo
+    maintainers:
+    - email: git+me@leb4r.io
+      name: leb4r
+    name: echo-server
+    sources:
+    - https://github.com/hashicorp/http-echo
+    urls:
+    - https://github.com/leb4r/charts/releases/download/echo-server-0.1.0/echo-server-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-02-01T19:41:23.988231145Z"
