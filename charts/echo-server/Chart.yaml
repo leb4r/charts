@@ -1,7 +1,7 @@
 apiVersion: v2
 name: echo-server
 description: A tiny go web server that echos what you start it with!
-version: "0.1.0"
+version: "0.2.0"
 icon: https://leb4r.github.io/charts/assets/img/http-echo.svg
 keywords:
   - http-echo
