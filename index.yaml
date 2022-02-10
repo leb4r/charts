@@ -77,6 +77,24 @@ entries:
   echo-server:
   - apiVersion: v2
     appVersion: 0.2.3
+    created: "2022-02-10T22:30:44.908386728Z"
+    description: A tiny go web server that echos what you start it with!
+    digest: 487fe117d5d9fa546fc6d201985dd60362364933e40a2c1bc38c332beb80d73e
+    home: https://github.com/hashicorp/http-echo
+    icon: https://leb4r.github.io/charts/assets/img/http-echo.svg
+    keywords:
+    - http-echo
+    maintainers:
+    - email: git+me@leb4r.io
+      name: leb4r
+    name: echo-server
+    sources:
+    - https://github.com/hashicorp/http-echo
+    urls:
+    - https://github.com/leb4r/charts/releases/download/echo-server-0.3.0/echo-server-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 0.2.3
     created: "2022-02-09T22:45:55.013059339Z"
     description: A tiny go web server that echos what you start it with!
     digest: d47f8546ba839652e147e8e37ac03c7aee8b338c9e23922c39be676db2370163
@@ -111,4 +129,4 @@ entries:
     urls:
     - https://github.com/leb4r/charts/releases/download/echo-server-0.1.0/echo-server-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-09T22:45:55.013083539Z"
+generated: "2022-02-10T22:30:44.908530326Z"
