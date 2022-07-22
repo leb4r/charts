@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "algorand.fullname" . }}
+  labels:
+    {{- include "algorand.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "algorand.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "algorand.fullname" . }}
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "algorand.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- include "algorand.pod" . | nindent 6 }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ template "algorand.fullname" . }}
+      spec:
+        accessModes: {{ .Values.storage.accessModes }}
+        storageClassName: {{ .Values.storage.storageClassName }}
+        resources:
+          requests:
+            storage: {{ .Values.storage.size }}
+        {{- with .Values.storage.selectorLabels }}
+        selector:
+          matchLabels:
+          {{ toYaml . | indent 10 }}
+        {{- end }}
+
