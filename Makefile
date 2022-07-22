@@ -13,8 +13,8 @@ lint:
 	ct lint --all
 
 minikube:
-	bash scripts/setup-minikube.sh --start
-	bash scripts/setup-cluster.sh
+	bash test/scripts/setup-minikube.sh --start
+	bash test/scripts/setup-cluster.sh
 
 test:
 	ct install --config ct.yaml
