@@ -1,7 +1,7 @@
 .PHONY: cleanup docs index lint minikube test
 
 cleanup:
-	bash scripts/setup-minikube.sh --delete
+	bash test/scripts/setup-minikube.sh --delete
 
 docs:
 	bash .github/helm-docs.sh
